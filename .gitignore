@@ -1,0 +1,13 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files 
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files 
+*.tfplan
+
+# Terraform CLI configuration files (local user settings)
+.terraformrc
+terraform.rc
