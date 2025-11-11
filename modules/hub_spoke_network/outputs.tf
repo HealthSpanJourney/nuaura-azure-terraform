@@ -40,3 +40,12 @@ output "spoke_subnet_ids" {
   }
 }
 
+output "private_endpoint_subnet_id" {
+  description = "ID of the private endpoints subnet"
+  value       = azurerm_subnet.private_endpoints.id
+}
+
+output "private_dns_zone_ids" {
+  description = "Map of private DNS zone names to their IDs"
+  value       = { for k, v in azurerm_private_dns_zone.services : k => v.id }
+}

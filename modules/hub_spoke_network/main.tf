@@ -67,6 +67,25 @@ resource "azurerm_subnet" "dns_resolver_outbound" {
   address_prefixes     = [local.dns_outbound_cidr]
 }
 
+resource "azurerm_subnet" "private_endpoints" {
+  name                = "PrivateEndpoints"
+  resource_group_name = local.rg_name
+  virtual_network_name = azurerm_virtual_network.hub.name
+  address_prefixes    = [var.hub.private_endpoints_cidr]
+
+  # This subnet will be used for private endpoints
+  service_endpoints = ["Microsoft.KeyVault", 
+                      "Microsoft.ContainerRegistry",
+                      "Microsoft.Storage",
+                      "Microsoft.CognitiveServices"]
+
+  # Private endpoint network policies are now controlled at the private endpoint level
+  private_link_service_network_policies_enabled = false  # Allows private endpoints to be created
+
+
+}
+
+
 resource "azurerm_subnet" "appsvc_integration" {
   name                 = "AppSvc-Integration"
   resource_group_name  = local.rg_name

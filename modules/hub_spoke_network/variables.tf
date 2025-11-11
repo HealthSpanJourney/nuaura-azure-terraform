@@ -20,6 +20,7 @@ variable "hub" {
     runner_subnet_cidr         = string
     dns_resolver_inbound_cidr  = optional(string)
     dns_resolver_outbound_cidr = optional(string)
+    private_endpoints_cidr     = string
   })
   description = "Configuration for the hub virtual network and its subnets."
 }

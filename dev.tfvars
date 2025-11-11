@@ -13,6 +13,7 @@ hub = {
   runner_subnet_cidr         = "10.0.0.32/27"
   dns_resolver_inbound_cidr  = "10.0.0.96/27"
   dns_resolver_outbound_cidr = "10.0.0.128/27"
+  private_endpoints_cidr     = "10.0.1.0/25"  # 128 IPs for shared private endpoints
 }
 
 spoke = {
